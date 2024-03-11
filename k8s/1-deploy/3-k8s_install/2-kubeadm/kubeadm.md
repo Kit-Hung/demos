@@ -1,3 +1,4 @@
+# 通过 kubeadm 创建集群
 ### check port
 
 ```shell
@@ -123,7 +124,7 @@ vi /etc/containerd/config.toml
 #   capabilities = ["pull", "resolve"]
 
 ### cat /etc/containerd/certs.d/registry.k8s.io/host.toml 
-# server = "https://k8s.gcr.io"
+# server = "https://registry.k8s.io"
 
 # [host."https://registry.aliyuncs.com/google_containers"]
 #   capabilities = ["pull", "resolve"]
