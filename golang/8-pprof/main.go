@@ -19,6 +19,8 @@ import (
 
 func main() {
 	// 1. 通过文件的形式
+	// pprofUsingFile()
+
 	// 2. 通过 http 接口
 	pprofUsingHttp()
 }

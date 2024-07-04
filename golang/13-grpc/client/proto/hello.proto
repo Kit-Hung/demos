@@ -1,0 +1,23 @@
+// 指定使用 proto3
+syntax = "proto3";
+
+// 最后生成的 go 文件属于哪个目录哪个包
+// . 代表在当前目录生成
+// service 代表生成的 go 文件的包名是 service
+option go_package = ".;service";
+
+// 定义服务 SayHello ，在这个服务中有一个 rpc 方法，接收客户端参数 HelloRequest ，在返回服务端响应 HelloResponse
+service SayHello {
+  rpc SayHello(HelloRequest) returns (HelloResponse) {}
+}
+
+// message 相当于 go 中的结构体
+// repeated 会生成切片
+message HelloRequest {
+  string requestName = 1;
+  repeated int64 nums = 2;
+}
+
+message HelloResponse {
+  string responseMsg = 1;
+}

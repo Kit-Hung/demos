@@ -2,6 +2,7 @@
 
 | Module ID | Module                    | Guide                                                      |
 |:---------:|:--------------------------|:-----------------------------------------------------------|
+|     0     | 场景题                       | [0-scenario](0-scenario/README.md)                         |
 |     1     | 生产者和消费者                   | [1-prod_and_consumer](1-prod_and_consumer)                 |
 |     2     | 定时器                       | [2-timer_and_ticker](2-timer_and_ticker)                   |
 |     3     | context 的使用               | [3-context](3-context)                                     |
@@ -14,4 +15,5 @@
 |    10     | zap                       | [10-zap](10-zap)                                           |
 |    11     | flag                      | [11-flag](11-flag)                                         |
 |    12     | 数据交换                      | [12-swap](12-swap)                                         |
+|    13     | grpc                      | [13-grpc](13-grpc/README.md)                               |
 
