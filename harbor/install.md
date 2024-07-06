@@ -43,8 +43,8 @@ docker login -u admin -p Harbor12345 core.harbor.domain
 
 ## 配置 containerd
 ```shell
-cp ca.crt /etc/containerd/certs.d/core.harbor.domain/
 mkdir -p /etc/containerd/certs.d/core.harbor.domain
+cp ca.crt /etc/containerd/certs.d/core.harbor.domain/
 
 vim /etc/containerd/certs.d/core.harbor.domain/hosts.toml
 server = "https://core.harbor.domain"
