@@ -109,7 +109,7 @@ vi /etc/containerd/config.toml
 # 默认：
 # sandbox_image = "registry.k8s.io/pause:3.6"
 # 改为：
-# sandbox_image = "registry.aliyuncs.com/google_containers/pause:3.9"
+# sandbox_image = "registry.aliyuncs.com/google_containers/pause:3.10"
 
 
 # version = 2
@@ -128,6 +128,13 @@ vi /etc/containerd/config.toml
 
 # [host."https://registry.aliyuncs.com/google_containers"]
 #   capabilities = ["pull", "resolve"]
+
+### cat /etc/containerd/certs.d/core.harbor.domain/host.toml
+# server = "https:///core.harbor.domain"
+
+# [host."https:///core.harbor.domain"]
+#   capabilities = ["pull", "resolve", "push"]
+#   ca = "harbor.crt"
 
 
 

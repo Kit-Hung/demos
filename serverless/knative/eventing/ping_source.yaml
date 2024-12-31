@@ -1,0 +1,32 @@
+apiVersion: sources.knative.dev/v1
+kind: PingSource
+metadata:
+  name: knative-hello-ping-source
+  namespace: knative-samples
+spec:
+  schedule: "*/1 * * * *"
+  contentType: "application/json"
+  data: '{"message": "Hello from kit !"}'
+  sink:
+    ref:
+      apiVersion: messaging.knative.dev/v1
+      kind: Channel
+      name: knative-hello-channel
+
+---
+
+apiVersion: messaging.knative.dev/v1
+kind: Subscription
+metadata:
+  name: knative-hello-subs
+  namespace: knative-samples
+spec:
+  channel:
+    apiVersion: messaging.knative.dev/v1
+    kind: Channel
+    name: knative-hello-channel
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: http-fn

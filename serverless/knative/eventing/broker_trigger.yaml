@@ -1,0 +1,55 @@
+# Namespace for sample application
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: knative-samples
+---
+# A default broker
+apiVersion: eventing.knative.dev/v1
+kind: Broker
+metadata:
+  name: default
+  namespace: knative-samples
+  annotations:
+    # Note: you can set the eventing.knative.dev/broker.class annotation to change the class of the broker.
+    # The default broker class is MTChannelBasedBroker, but Knative also supports use of the other class.
+    eventing.knative.dev/broker.class: MTChannelBasedBroker
+spec: {}
+---
+
+# Knative Eventing Trigger to trigger the helloworld-go service
+apiVersion: eventing.knative.dev/v1
+kind: Trigger
+metadata:
+  name: helloworld-go
+  namespace: knative-samples
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: dev.knative.samples.helloworld
+      source: dev.knative.samples/helloworldsource
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: helloworld-go
+
+
+---
+
+apiVersion: messaging.knative.dev/v1
+kind: Subscription
+metadata:
+  name: knative-hello-subs
+  namespace: knative-samples
+spec:
+  channel:
+    apiVersion: messaging.knative.dev/v1
+    kind: Channel
+    name: knative-hello-channel
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1
+      kind: Service
+      name: http-fn

@@ -1,0 +1,10 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: http-fn
+spec:
+  traffic:
+    - revisionName: http-fn-00002
+      percent: 50
+    - revisionName: http-fn-00003
+      percent: 50

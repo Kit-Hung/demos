@@ -1,0 +1,24 @@
+specVersion: 0.36.0
+name: event-fn
+runtime: go
+namespace: default
+registry: core.harbor.domain/knative
+image: core.harbor.domain/knative/event-fn:v1
+created: 2024-08-16T19:05:24.433277404+08:00
+invoke: cloudevent
+build:
+  builder: pack
+  buildEnvs:
+    - name: GOPROXY
+      value: https://goproxy.cn,direct
+run:
+  volumes: []
+  envs: []
+deploy:
+  namespace: default
+  annotations: {}
+  options: {}
+  labels: []
+  healthEndpoints:
+    liveness: /health/liveness
+    readiness: /health/readiness
